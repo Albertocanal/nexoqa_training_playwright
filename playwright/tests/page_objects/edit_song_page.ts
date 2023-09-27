@@ -1,6 +1,6 @@
 import { Page, Locator } from "@playwright/test";
 
-export class AddSongPage{
+export class EditSongPage{
 
     readonly page: Page;
     readonly title: Locator;
@@ -15,19 +15,19 @@ export class AddSongPage{
 
     constructor(page:Page){
         this.page=page;
-        this.title = this.page.locator('#sngTitle');
-        this.artist = this.page.locator('#sngArtist');
-        this.genre = this.page.locator('#sngGenre');
-        this.album = this.page.locator('#sngAlbum');
-        this.albumImgUrl = this.page.locator('#sngAlbumImg');
-        this.youtubeUrl = this.page.locator('#sngYoutube');
-        this.tab = this.page.locator('#sngTab');
-        this.lyrics = this.page.locator('#sngLyrics');
-        this.button = this.page.locator('#sngBtn');
+        this.title = this.page.getByLabel('Title');
+        this.artist = this.page.getByLabel('Artist');
+        this.genre = this.page.getByLabel('Genre');
+        this.album = this.page.getByLabel('Album', {exact: true});
+        this.albumImgUrl = this.page.getByLabel('Album Image Url', {exact: true});
+        this.youtubeUrl = this.page.getByLabel('YouTube ID');
+        this.tab = this.page.getByLabel('Tab');
+        this.lyrics = this.page.getByLabel('Lyrics');
+        this.button = this.page.locator('button.btn');
 
     };
 
-    async fillSong(title: string, artist: string,genre: string, album: string,albumImgUrl: string, youtubeUrl: string, tab: string,lyrics: string){
+    async editSong(title: string, artist: string,genre: string, album: string,albumImgUrl: string, youtubeUrl: string, tab: string,lyrics: string){
         await this.title.fill(title);
         await this.artist.fill(artist);
         await this.genre.fill(genre)
