@@ -3,7 +3,7 @@ import { HomePage } from '../page_objects/home_page';
 import { AddSongPage } from '../page_objects/add_song_page';
 
 test('Add new song',async ({ page }) => {
-    await page.goto('http://localhost:8080/');
+    await page.goto('http://192.168.0.30:8080/');
 
     var homePage: HomePage = new HomePage(page);
     await homePage.addButton.click();
