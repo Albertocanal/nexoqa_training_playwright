@@ -20,7 +20,7 @@ test('Edit a song',async ({ page }) => {
     await homePage.songs.last().locator('a.btn').click();
 
     var songViewPage: SongViewPage = new SongViewPage(page);
-    songViewPage.editButton.click();
+    await songViewPage.editButton.click();
 
     var editSongPage: EditSongPage = new EditSongPage(page);
     await editSongPage.editSong(
